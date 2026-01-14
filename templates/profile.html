@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Профіль</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+<div class="container">
+    <button id="theme-toggle" class="theme-toggle">🌙</button>
+
+    <h2>Профіль</h2>
+    <p>Ви увійшли як:</p>
+    <p><b>{{ user.username }}</b></p>
+
+    <a href="/logout">Вийти</a>
+</div>
+
+<script src="/static/theme.js"></script>
+</body>
+</html>
