@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Додати гру</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+<div class="container">
+    <button id="theme-toggle" class="theme-toggle">🌙</button>
+
+    <h2>➕ Додати гру</h2>
+
+    <form method="post">
+        <input name="title" placeholder="Назва гри" required>
+        <input name="genre" placeholder="Жанр" required>
+
+        <select name="status"
+            style="width:100%; padding:14px; border-radius:10px; margin-bottom:14px;">
+            <option>Граю</option>
+            <option>Пройдено</option>
+            <option>В планах</option>
+        </select>
+
+        <button>Зберегти</button>
+    </form>
+
+    <a href="/profile">Назад</a>
+</div>
+
+<script src="/static/theme.js"></script>
+</body>
+</html>

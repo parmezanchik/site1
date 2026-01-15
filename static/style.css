@@ -1,80 +1,147 @@
+/* ---------- RESET ---------- */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: Arial, sans-serif;
+    font-family: "Segoe UI", Inter, Arial, sans-serif;
 }
 
 /* ---------- THEME VARIABLES ---------- */
 :root {
-    --bg: #f0f2f5;
+    --bg: linear-gradient(135deg, #eef2f7, #d9e4f5);
     --card: #ffffff;
-    --text: #222;
-    --accent: #4facfe;
+    --text: #1f2937;
+    --muted: #6b7280;
+    --accent: #6366f1;
+    --accent-hover: #4f46e5;
+    --border: #e5e7eb;
 }
 
 body.dark {
-    --bg: #121212;
-    --card: #1e1e1e;
-    --text: #f1f1f1;
-    --accent: #64b5ff;
+    --bg: linear-gradient(135deg, #0f172a, #020617);
+    --card: #0b1220;
+    --text: #e5e7eb;
+    --muted: #9ca3af;
+    --accent: #60a5fa;
+    --accent-hover: #3b82f6;
+    --border: #1e293b;
 }
 
-/* ---------- LAYOUT ---------- */
+/* ---------- BODY ---------- */
 body {
-    background: var(--bg);
     min-height: 100vh;
+    background: var(--bg);
     display: flex;
-    justify-content: center;
     align-items: center;
+    justify-content: center;
     color: var(--text);
-    transition: 0.3s;
+    transition: background 0.4s ease, color 0.3s ease;
 }
 
+/* ---------- CARD ---------- */
 .container {
+    width: 100%;
+    max-width: 420px;
+    padding: 32px 28px 36px;
     background: var(--card);
-    padding: 30px;
-    width: 360px;
-    border-radius: 12px;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.2);
-    text-align: center;
+    border-radius: 16px;
+    box-shadow: 
+        0 20px 40px rgba(0,0,0,0.15),
+        inset 0 1px 0 rgba(255,255,255,0.04);
     position: relative;
+    animation: fadeUp 0.6s ease;
 }
 
-h1, h2 {
+@keyframes fadeUp {
+    from {
+        opacity: 0;
+        transform: translateY(15px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* ---------- HEADINGS ---------- */
+h1 {
+    font-size: 32px;
+    font-weight: 700;
     margin-bottom: 20px;
 }
 
-/* ---------- FORM ---------- */
-input {
-    width: 100%;
-    padding: 12px;
-    margin-bottom: 15px;
-    border-radius: 8px;
-    border: 1px solid #ccc;
-    font-size: 15px;
+h2 {
+    font-size: 26px;
+    font-weight: 600;
+    margin-bottom: 20px;
 }
 
+/* ---------- TEXT ---------- */
+p {
+    margin-bottom: 12px;
+    color: var(--muted);
+    font-size: 14px;
+}
+
+/* ---------- FORM ---------- */
+form {
+    margin-top: 10px;
+}
+
+input {
+    width: 100%;
+    padding: 14px 14px;
+    margin-bottom: 14px;
+    border-radius: 10px;
+    border: 1px solid var(--border);
+    background: transparent;
+    color: var(--text);
+    font-size: 15px;
+    transition: 0.2s;
+}
+
+input::placeholder {
+    color: var(--muted);
+}
+
+input:focus {
+    outline: none;
+    border-color: var(--accent);
+    box-shadow: 0 0 0 3px rgba(99,102,241,0.15);
+}
+
+/* ---------- BUTTON ---------- */
 button {
     width: 100%;
-    padding: 12px;
+    padding: 14px;
+    border-radius: 12px;
     border: none;
-    border-radius: 8px;
-    background: var(--accent);
+    background: linear-gradient(135deg, var(--accent), var(--accent-hover));
     color: white;
     font-size: 16px;
+    font-weight: 600;
     cursor: pointer;
+    transition: 0.2s;
 }
 
 button:hover {
-    opacity: 0.9;
+    transform: translateY(-1px);
+    box-shadow: 0 10px 25px rgba(99,102,241,0.35);
 }
 
+button:active {
+    transform: translateY(0);
+}
+
+/* ---------- LINKS ---------- */
 a {
     display: block;
-    margin-top: 15px;
+    margin-top: 16px;
+    text-align: center;
+    font-size: 14px;
     color: var(--accent);
     text-decoration: none;
+    font-weight: 500;
 }
 
 a:hover {
@@ -84,10 +151,22 @@ a:hover {
 /* ---------- THEME TOGGLE ---------- */
 .theme-toggle {
     position: absolute;
-    top: 12px;
-    right: 12px;
-    background: none;
-    border: none;
-    font-size: 20px;
+    top: 16px;
+    right: 16px;
+    width: 42px;
+    height: 42px;
+    border-radius: 50%;
+    background: transparent;
+    border: 1px solid var(--border);
+    font-size: 18px;
     cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: 0.25s;
+}
+
+.theme-toggle:hover {
+    background: rgba(99,102,241,0.1);
+    border-color: var(--accent);
 }

@@ -1,18 +1,39 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Профіль</title>
+    <title>Профіль — GameVault</title>
     <link rel="stylesheet" href="/static/style.css">
 </head>
 <body>
 <div class="container">
     <button id="theme-toggle" class="theme-toggle">🌙</button>
 
-    <h2>Профіль</h2>
-    <p>Ви увійшли як:</p>
-    <p><b>{{ user.username }}</b></p>
+    <h2>👤 {{ user.username }}</h2>
 
-    <a href="/logout">Вийти</a>
+    <p style="color:var(--muted); font-size:14px;">
+        Твоя ігрова бібліотека
+    </p>
+
+    {% if games %}
+        <ul style="margin-top:16px; font-size:14px;">
+        {% for game in games %}
+            <li style="margin-bottom:8px;">
+                <b>{{ game.title }}</b>  
+                — {{ game.genre }}  
+                <span style="color:var(--muted);">
+                    ({{ game.status }})
+                </span>
+            </li>
+        {% endfor %}
+        </ul>
+    {% else %}
+        <p style="margin-top:16px; color:var(--muted);">
+            У тебе поки немає ігор 😢
+        </p>
+    {% endif %}
+
+    <a href="/add-game">➕ Додати гру</a>
+    <a href="/logout">🚪 Вийти</a>
 </div>
 
 <script src="/static/theme.js"></script>

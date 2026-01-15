@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Реєстрація</title>
+    <title>Реєстрація — GameVault</title>
     <link rel="stylesheet" href="/static/style.css">
 </head>
 <body>
@@ -10,9 +10,15 @@
 
     <h2>Реєстрація</h2>
 
+    {% if error %}
+        <p style="color:#ef4444; font-weight:500;">
+            {{ error }}
+        </p>
+    {% endif %}
+
     <form method="post">
-        <input name="username" placeholder="Логін" required>
-        <input name="password" type="password" placeholder="Пароль" required>
+        <input name="username" placeholder="Логін (мін. 3 символи)" required>
+        <input name="password" type="password" placeholder="Пароль (мін. 6 символів)" required>
         <button>Зареєструватись</button>
     </form>
 

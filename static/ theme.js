@@ -1,24 +1,14 @@
-const body = document.body;
 const toggle = document.getElementById("theme-toggle");
 
-if (toggle) {
-
-    if (localStorage.getItem("theme") === "dark") {
-        body.classList.add("dark");
-        toggle.textContent = "☀️";
-    }
-
-    toggle.onclick = () => {
-        body.classList.toggle("dark");
-
-        if (body.classList.contains("dark")) {
-            localStorage.setItem("theme", "dark");
-            toggle.textContent = "☀️";
-        } else {
-            localStorage.setItem("theme", "light");
-            toggle.textContent = "🌙";
-        }
-    };
+function setTheme(dark) {
+    document.body.classList.toggle("dark", dark);
+    toggle.textContent = dark ? "☀️" : "🌙";
+    localStorage.setItem("theme", dark ? "dark" : "light");
 }
-uvicorn main:app --reload
 
+const savedTheme = localStorage.getItem("theme");
+setTheme(savedTheme === "dark");
+
+toggle.addEventListener("click", () => {
+    setTheme(!document.body.classList.contains("dark"));
+});
